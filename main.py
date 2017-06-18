@@ -1,5 +1,6 @@
 from classes.game import Person, bcolors
-from  classes.magic import Spell
+from classes.magic import Spell
+from classes.Inventory import Item
 
 fire = Spell("Fire", 10, 100, "black")
 thunder = Spell("Thunder", 10, 100, "black")
@@ -13,7 +14,15 @@ cura = Spell("Cura", 18, 200, "white")
 
 player = Person(460, 65, 60, 34, [fire, thunder, blizzard, meteor, cure, cura])
 enemy = Person(1200, 65, 45, 25, [])
-i =0
+
+potion = Item("Potion", "potion", "Heals 50 HP", 50)
+hipotion = Item("Hi-Potion", "potion", "Heals 100 HP", 100)
+superpotion = Item("Super Potion", "potion", "Heals 500 HP", 500)
+elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member ", 9999)
+hielixer = Item("MegaElixer", "elixer", "Fully restores party's HP/MP ", 9999)
+
+
+i = 0
 running = True
 
 print(bcolors.FAIL+bcolors.BOLD+"An Enemy Attacks!"+bcolors.ENDC)
