@@ -28,7 +28,6 @@ class Person:
     def generate_damage(self):
         return random.randrange(self.atkl, self.atkh)
 
-
     def take_damage(self, dmg):
         self.hp -= dmg
         if self.hp < 0:
@@ -50,18 +49,17 @@ class Person:
     def reduce_mp(self, cost):
         self.mp -= cost
 
-    def get_spell_name(self, i):
-        return self.magic[i]["name"]
-
-    def get_spell_mp_cost(self, i):
-        return self.magic[i]["cost"]
-
     def choose_action(self):
         i = 1
         print("Actions")
         for item in self.actions:
             print(str(i)+": ", item)
             i += 1
+
+    def heal(self, dmg):
+        self.hp += dmg
+        if self.hp > self.maxhp:
+            self.hp = self.maxhp
 
     def choose_magic(self):
         i = 1
