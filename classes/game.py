@@ -52,9 +52,9 @@ class Person:
 
     def choose_action(self):
         i = 1
-        print(bcolors.OKBLUE+"Actions"+bcolors.ENDC)
+        print("\n"+bcolors.OKBLUE+"Actions"+bcolors.ENDC)
         for item in self.actions:
-            print(str(i)+". ", item)
+            print("    "+str(i)+". ", item)
             i += 1
 
     def heal(self, dmg):
@@ -64,16 +64,16 @@ class Person:
 
     def choose_magic(self):
         i = 1
-        print(bcolors.OKBLUE+bcolors.BOLD+"Magic"+bcolors.ENDC)
+        print("\n"+bcolors.OKBLUE+bcolors.BOLD+"Magic"+bcolors.ENDC)
         for spell in self.magic:
-            print(str(i) + ". ", spell.name, "( cost:", str(spell.cost) + ")")
+            print("    "+str(i) + ". ", spell.name, "( cost:", str(spell.cost) + ")")
             i += 1
 
     def choose_items(self):
         i = 1
-        print(bcolors.OKGREEN + bcolors.BOLD + "ITEMS" + bcolors.ENDC)
+        print("\n"+bcolors.OKGREEN + bcolors.BOLD + "ITEMS" + bcolors.ENDC)
         for itmes in self.items:
-            print(str(i) + ". ", itmes.name, ":", itmes.description, "(x5)")
+            print("    "+str(i) + ". ", itmes["item"].name+ ":", itmes["item"].description, "(x"+str(itmes["quantity"])+")")
             i += 1
 
 
