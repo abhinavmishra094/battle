@@ -79,11 +79,88 @@ class Person:
                   "(x" + str(itmes["quantity"]) + ")")
             i += 1
 
+    def get_enemy_stats(self):
+        hp_bar = ""
+        bar_ticks = (self.hp/self.maxhp) * 100 / 2
+
+        while bar_ticks > 0:
+            hp_bar += "█"
+            bar_ticks -= 1
+
+        while len(hp_bar) < 50:
+            hp_bar += " "
+
+        hp_string = str(self.hp) + "/" + str(self.maxhp)
+        current_hp = ""
+
+        if len(hp_string) < 11:
+            decrease = 11 - len(hp_string)
+
+            while decrease > 0:
+                current_hp += " "
+                decrease -= 1
+
+            current_hp += hp_string
+
+        else:
+            current_hp = hp_string
+        print("                   __________________________________________________ ")
+        print(bcolors.BOLD + self.name + "  " +
+              current_hp + "|" + bcolors.FAIL + hp_bar + bcolors.ENDC + bcolors.BOLD+"|" +
+              bcolors.ENDC)
+
     def get_stats(self):
+        hp_bar = ""
+        bar_ticks = (self.hp/self.maxhp) * 100 / 4
+        mp_bar = ""
+        mp_ticks = (self.mp/self.maxmp)*100 / 10
+        while bar_ticks > 0:
+            hp_bar += "█"
+            bar_ticks -= 1
+
+        while len(hp_bar) <= 25:
+            hp_bar += " "
+
+        while mp_ticks > 0:
+            mp_bar += "█"
+            mp_ticks -= 1
+
+        while len(mp_bar) <= 10:
+            mp_bar += " "
+
+        hp_string = str(self.hp)+"/"+str(self.maxhp)
+        current_hp = ""
+
+        if len(hp_string) < 9:
+            decrease = 9 - len(hp_string)
+
+            while decrease > 0:
+                current_hp += " "
+                decrease -= 1
+
+            current_hp += hp_string
+
+        else:
+            current_hp = hp_string
+
+        mp_string = str(self.mp) + "/" + str(self.maxmp)
+        current_mp = ""
+
+        if len(mp_string) < 7:
+            decrease = 7 - len(mp_string)
+
+            while decrease > 0:
+                current_mp += " "
+                decrease -= 1
+
+            current_mp += mp_string
+
+        else:
+            current_mp = mp_string
         print("NAME               HP                                   MP")
-        print("                   ___________________________          __________ ")
+        print("                   ___________________________           __________ ")
         print(bcolors.BOLD + self.name+"    " +
-              str(self.hp)+"/"+str(self.maxhp)+"|" + bcolors.OKGREEN + "█████████                  " +
+              current_hp+"|" + bcolors.OKGREEN + hp_bar +
               bcolors.ENDC + bcolors.BOLD
-              + "|   "+str(self.mp)+"/"+str(self.maxmp)+"|"
-              + bcolors.OKBLUE + "█████     " + bcolors.ENDC + bcolors.BOLD + "|" + bcolors.ENDC)
+              + "|   "+current_mp+"|"
+              + bcolors.OKBLUE + mp_bar + bcolors.ENDC + bcolors.BOLD + "|" + bcolors.ENDC)
